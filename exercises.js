@@ -22,8 +22,16 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   */
 
   // Modify the line of code BELOW to run a different exercise
-  exercise_01();
+  exercise_03();
   // Modify the line of code ABOVE to run a different exercise
+}
+
+function ltc(x) {
+  console.log(x);
+}
+
+function plannedDelay(y) {
+  return new Promise(resolve => setTimeout(resolve, y));
 }
 
 function exercise_01() {
@@ -42,10 +50,26 @@ function exercise_01() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
+  function logNumberSync() {
+    for (let i = 1; i <= 5; i++) {
+      ltc(i);
+    }
+    ltc("Synchronous function complete");
+  }
 
+  logNumberSync();
+
+  async function logNumberAsync() {
+    for (let i = 1; i <= 5; i++) {
+      ltc(i);
+      await delay(1000);
+    }
+  ltc("Asynchronous function complete");
+   }
+  
+  logNumberAsync();
   // CODE IN THE OPEN LINES ABOVE
-}
+  }
 
 function exercise_02() {
   /* 
@@ -61,7 +85,13 @@ function exercise_02() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
+  async function fetchData(someData, callback) {
+    await plannedDelay(2000);
+    callback("Danger will robinson!! " + someData);
+  }
+
+  fetchData("Some data", (result) => {
+     ltc(result)});
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -81,8 +111,21 @@ function exercise_03() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
+  async function readFile(someFile, callback) {
+    await plannedDelay(1000);
+    let someFileData;
+    if (someFile === 'data.txt') {
+      someFileData = "File content"; 
+    } else {
+      someFileData = "Data not found";
+    }
+    callback(someFileData);
 
+  }
+
+  readFile("data.pdf", (result) => { ltc(result) });
+
+  
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -99,7 +142,19 @@ function exercise_04() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
+  async function readFile(someFile, callback) {
+    await plannedDelay(1000);
+    let someFileData;
+    if (someFile === 'data.txt') {
+      someFileData = "File content"; 
+    } else {
+      someFileData = "Data not found";
+    }
+    callback(someFileData);
+
+  }
+
+  readFile("data.pdf", (result) => { ltc(result) });
 
   // CODE IN THE OPEN LINES ABOVE
 }
