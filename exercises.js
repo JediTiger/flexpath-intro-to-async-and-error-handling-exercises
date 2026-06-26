@@ -22,7 +22,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   */
 
   // Modify the line of code BELOW to run a different exercise
-  exercise_03();
+  exercise_05();
   // Modify the line of code ABOVE to run a different exercise
 }
 
@@ -142,19 +142,26 @@ function exercise_04() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  async function readFile(someFile, callback) {
+  async function task1(text, callback) {
     await plannedDelay(1000);
-    let someFileData;
-    if (someFile === 'data.txt') {
-      someFileData = "File content"; 
-    } else {
-      someFileData = "Data not found";
+    callback(text);
     }
-    callback(someFileData);
+    async function task2(text, callback) {
+      await plannedDelay(1000);
+      callback(text);
+    }
+    async function task3(text, callback) {
+      await plannedDelay(1000);
+      callback(text);
 
-  }
+    }
+  task1("Task 1", (result) => { ltc(result) 
+    task2("Task 2", (result) => { ltc(result) 
+      task3("Task 3", (result) => { ltc(result) 
+        });
+      });
+  });
 
-  readFile("data.pdf", (result) => { ltc(result) });
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -172,7 +179,36 @@ function exercise_05() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
+  function readFile(someFile, callback) {
+    let someFileData;
+    if (someFile === 'data.txt') {
+      someFileData = "File content"; 
+    } else {
+      someFileData = "Data not found";
+    }
+    callback(someFile);
+  }
+
+  function readFilePromise(someFile) {
+    return new Promise((resolve, reject) => { 
+      readFile("data.pdf", (error, data) => { ltc(result) });
+      if (error) {
+        reject(error);
+      } else {
+        resolve(someFileData);
+      }
+    });
+  }
+  
+  async function run() {
+    try {
+      const user = await readFilePromise(42);
+      console.log(user.name); // Output: Alice
+    } catch (error) {
+      console.error(error);
+    }
+  }
+run();
 
   // CODE IN THE OPEN LINES ABOVE
 }
