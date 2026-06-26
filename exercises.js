@@ -186,26 +186,27 @@ function exercise_05() {
     } else {
       someFileData = "Data not found";
     }
-    callback(someFile);
+    callback(someFileData);
   }
 
   function readFilePromise(someFile) {
     return new Promise((resolve, reject) => { 
-      readFile("data.pdf", (error, data) => { ltc(result) });
-      if (error) {
-        reject(error);
-      } else {
-        resolve(someFileData);
-      }
+      readFile(someFile, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(someFileData);
+        }
+      });
     });
   }
   
   async function run() {
     try {
-      const user = await readFilePromise(42);
-      console.log(user.name); // Output: Alice
+      const readResult = await readFilePromise('data.txt');
+      ltc(readResult);
     } catch (error) {
-      console.error(error);
+      ltc(error);
     }
   }
 run();
@@ -227,7 +228,25 @@ function exercise_06() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
+  async function task1(text, callback) {
+    await plannedDelay(1000);
+    callback(text);
+    }
+    async function task2(text, callback) {
+      await plannedDelay(1000);
+      callback(text);
+    }
+    async function task3(text, callback) {
+      await plannedDelay(1000);
+      callback(text);
+
+    }
+  task1("Task 1", (result) => { ltc(result) 
+    task2("Task 2", (result) => { ltc(result) 
+      task3("Task 3", (result) => { ltc(result) 
+        });
+      });
+  });
 
   // CODE IN THE OPEN LINES ABOVE
 }
