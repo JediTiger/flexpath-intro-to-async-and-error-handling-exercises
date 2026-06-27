@@ -603,6 +603,7 @@ async function exercise_10() {
     }
     finally {
       ltc("Async function complete");
+    }
   }
   runTasks();
 
