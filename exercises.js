@@ -22,7 +22,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   */
 
   // Modify the line of code BELOW to run a different exercise
-  exercise_08();
+  exercise_09();
   // Modify the line of code ABOVE to run a different exercise
 }
 
@@ -228,7 +228,7 @@ function exercise_06() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  async function task1(text) {
+  function task1(text) {
     ltc("Task 1 function started");
     return new Promise((resolve,reject) => {
       ltc("Task 1 promise block started");
@@ -242,7 +242,7 @@ function exercise_06() {
     });
   }
   
-  async function task2(text) {
+  function task2(text) {
     return new Promise((resolve,reject) => {
       ltc("Task 2 promise block started");
       if (text === "Task 2") {
@@ -255,7 +255,7 @@ function exercise_06() {
     });
   }
 
-  async function task3(text) {
+  function task3(text) {
     return new Promise((resolve,reject) => {
       ltc("Task 3 promise block started");
       if (text === "Task 3") {
@@ -300,7 +300,7 @@ async function exercise_07() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  async function task1(text) {
+  function task1(text) {
     ltc("Task 1 function started");
     return new Promise((resolve,reject) => {
       ltc("Task 1 promise block started");
@@ -314,7 +314,7 @@ async function exercise_07() {
     });
   }
   
-  async function task2(text) {
+  function task2(text) {
     return new Promise((resolve,reject) => {
       ltc("Task 2 promise block started");
       if (text === "Task 2") {
@@ -327,7 +327,7 @@ async function exercise_07() {
     });
   }
 
-  async function task3(text) {
+  function task3(text) {
     return new Promise((resolve,reject) => {
       ltc("Task 3 promise block started");
       if (text === "Task 3") {
@@ -376,7 +376,7 @@ async function exercise_08() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  async function task1(text) {
+  function task1(text) {
     ltc("Task 1 function started");
     return new Promise((resolve,reject) => {
       ltc("Task 1 promise block started");
@@ -390,7 +390,7 @@ async function exercise_08() {
     });
   }
   
-  async function task2(text) {
+  function task2(text) {
     return new Promise((resolve,reject) => {
       ltc("Task 2 promise block started");
       if (text === "Task 2") {
@@ -403,7 +403,7 @@ async function exercise_08() {
     });
   }
 
-  async function task3(text) {
+  function task3(text) {
     return new Promise((resolve,reject) => {
       ltc("Task 3 promise block started");
       if (text === "Task 3") {
@@ -416,26 +416,23 @@ async function exercise_08() {
     });
   }
 
-  //task1("Task 1").then(result => { ltc(result); ltc("Task 1 executed"); return task2("Task 2");}).then(result => { ltc(result); ltc("Task 2 executed"); return task3("Task 3");}).then(result => { ltc(result); ltc("Task 3 executed");}).catch((error) => { ltc(error)} ).finally("Process finished");
-
-
   task1("Task 1")
-.then(result => {
-  ltc(result);
-  ltc("Task 1 executed");
-  return task2("Task 2");
-})
-.then(result => {
-  ltc(result);
-  ltc("Task 2 executed");
-  return task3("Task 3");
-})
-.then(result => {
-  ltc(result);
-  ltc("Task 3 executed");
-})
-.catch((error) => { ltc(error)} )
-.finally("Process finished");
+  .then(result => {
+    ltc(result);
+    ltc("Task 1 executed");
+    return task2("Task 2");
+  })
+  .then(result => {
+    ltc(result);
+    ltc("Task 2 executed");
+    return task3("Task 3");
+  })
+  .then(result => {
+    ltc(result);
+    ltc("Task 3 executed");
+  })
+  .catch((error) => { ltc(error)} )
+  .finally(() => { (ltc("Process finished"));} );
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -454,7 +451,45 @@ async function exercise_09() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
+  function task1(text) {
+    ltc("Task 1 function started");
+    return new Promise((resolve,reject) => {
+      ltc("Task 1 promise block started");
+      if (text === "Task 1") {
+        ltc("Task 1 function complete");
+        resolve("Task 1 text checked");
+      } else {
+        ltc("Task 1 function rejected");
+        reject(new Error("Wrong task name passed"));
+      }
+    });
+  }
+  
+  function task2(text) {
+    return new Promise((resolve,reject) => {
+      ltc("Task 2 promise block started");
+      if (text === "Task 2") {
+        ltc("Task 2 function complete");
+        resolve("Task 2 text checked");
+      } else {
+        ltc("Task 2 function rejected");
+        reject("Wrong task name passed");
+      }
+    });
+  }
+
+  function task3(text) {
+    return new Promise((resolve,reject) => {
+      ltc("Task 3 promise block started");
+      if (text === "Task 3") {
+        ltc("Task 3 function complete");
+        resolve("Task 3 text checked");
+      } else {
+        ltc("Task 3 function rejected");
+        reject("Wrong task name passed");
+      }
+    });
+  }
 
   // CODE IN THE OPEN LINES ABOVE
 }
