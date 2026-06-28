@@ -23,7 +23,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   */
 
   // Modify the line of code BELOW to run a different exercise
-  exercise_10();
+  exercise_11();
   // Modify the line of code ABOVE to run a different exercise
 }
 
@@ -625,7 +625,39 @@ async function exercise_11() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
+  function checkSomeNumber(x) {
+      if (x >=0) {
+        ltc("Synchronous input correct");
+      } else {
+        throw new RangeError("Number is negative. Number must be a positive whole number.");
+      }
+    }
+  
+  checkSomeNumber(4);
+
+  function fetchAFile(someData) {
+    ltc("Fetch task started");
+    ltc(someData);
+    ltc("Fetch task completed");
+    return someData;
+
+  }
+
+  async function runFetch(resolve,reject) {
+    try {
+      const results = await fetchAFile("data.pdf");
+      if (results !== "data.txt") {
+        throw new ValidationError("????", error);
+      }
+    } catch (error) {
+        console.error(("Improper data format."), error);
+    }
+    finally {
+      ltc("Async function complete");
+    }
+  }
+
+  runFetch();
 
   // CODE IN THE OPEN LINES ABOVE
 }
