@@ -23,7 +23,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   */
 
   // Modify the line of code BELOW to run a different exercise
-  exercise_11();
+  exercise_12();
   // Modify the line of code ABOVE to run a different exercise
 }
 
@@ -677,7 +677,27 @@ function exercise_12() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
+  class ValidationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "ValidationError";
+  }
+}
+
+  function checkPositiveNumber(number) {
+      if (number <=0) {
+        ltc("Number is negative");
+        throw new ValidationError("Number is negative. Number must be a positive whole number.");
+      } else {
+        ltc("input is valid");
+      }
+      return number;
+  }
+  try {
+    checkPositiveNumber (-1); 
+  } catch (error) {
+      console.error("Validation error", error);
+  }
 
   // CODE IN THE OPEN LINES ABOVE
 }
