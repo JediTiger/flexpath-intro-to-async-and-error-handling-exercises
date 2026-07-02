@@ -23,7 +23,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   */
 
   // Modify the line of code BELOW to run a different exercise
-  exercise_17();
+  exercise_18();
   // Modify the line of code ABOVE to run a different exercise
 }
 
@@ -928,7 +928,9 @@ function exercise_18() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
+  const promise1 = sleep(1000).then(() => "First promise completed");
+  const promise2 = sleep(1500).then(() => "Second promise completed");
+  Promise.all([promise1, promise2]).then((results) => ltc(results));
 
   // CODE IN THE OPEN LINES ABOVE
 }
