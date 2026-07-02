@@ -23,7 +23,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   */
 
   // Modify the line of code BELOW to run a different exercise
-  exercise_13();
+  exercise_15();
   // Modify the line of code ABOVE to run a different exercise
 }
 
@@ -719,13 +719,14 @@ function exercise_13() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-fs.readFile('exercise_example.txt', 'utf8', (err, data) => {
-  if (err) {
-    console.error('An error occurred:', err);
-    return;
-  }
-  ltc(`File content: + ${data}`);
-});
+  fs.readFile('exercise_example.txt', 'utf8', (err, data) => {
+    if (err) {
+      console.error('An error occurred:', err);
+      return;
+    }
+    ltc(`File content: + ${data}`);
+  });
+
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -746,8 +747,15 @@ function exercise_14() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
-
+  async function run() {
+    try {
+      const data = await fsPromises.readFile('exercise_example.txt', 'utf8');
+      ltc(`Data: ${data}`);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  run();
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -769,7 +777,29 @@ async function exercise_15() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
+  async function readSomeFile() {
+    try {
+      const data = await fsPromises.readFile('exercise_exaxmple.txt', 'utf8');
+      ltc(`Data: ${data}`);
+      return data;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+    async function writeSomeFile(fileContents) {
+      ltc(fileContents);
+    try {
+      await fsPromises.writeFile('destination.txt', fileContents, 'utf8');
+      ltc('File saved');
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  const fileData = readSomeFile();
+  ltc(fileData);
+  writeSomeFile(fileData);
 
   // CODE IN THE OPEN LINES ABOVE
 }
