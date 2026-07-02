@@ -23,7 +23,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   */
 
   // Modify the line of code BELOW to run a different exercise
-  exercise_15();
+  exercise_16();
   // Modify the line of code ABOVE to run a different exercise
 }
 
@@ -777,29 +777,27 @@ async function exercise_15() {
   */
   // CODE IN THE OPEN LINES BELOW
 
+  let fileContents;
   async function readSomeFile() {
     try {
-      const data = await fsPromises.readFile('exercise_exaxmple.txt', 'utf8');
+      const data = await fsPromises.readFile('exercise_example.txt', 'utf8');
       ltc(`Data: ${data}`);
       return data;
     } catch (err) {
       console.error(err);
     }
   }
-
     async function writeSomeFile(fileContents) {
-      ltc(fileContents);
-    try {
-      await fsPromises.writeFile('destination.txt', fileContents, 'utf8');
-      ltc('File saved');
-    } catch (err) {
-      console.error(err);
+      try {
+        await fsPromises.writeFile('destination.txt', fileContents, 'utf8');
+        ltc('File saved');
+      } catch (err) {
+        console.error(err);
+      }
     }
-  }
 
-  const fileData = readSomeFile();
-  ltc(fileData);
-  writeSomeFile(fileData);
+  const data = await readSomeFile();
+  writeSomeFile(data);
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -819,8 +817,20 @@ function exercise_16() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let placeholder = "Delete me and code here";
+  async function fetchSomeData() {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+      if (!response.ok) {
+        throw new Error(`HTTP error Will Robinson! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log('Success:', data);
+    } catch (error) {
+      console.error('Fetching file error:', error);
+    }
+  }
 
+  fetchSomeData();
   // CODE IN THE OPEN LINES ABOVE
 }
 
