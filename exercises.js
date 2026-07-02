@@ -23,7 +23,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   */
 
   // Modify the line of code BELOW to run a different exercise
-  exercise_16();
+  exercise_17();
   // Modify the line of code ABOVE to run a different exercise
 }
 
@@ -874,9 +874,34 @@ function exercise_17() {
   
   */
   // CODE IN THE OPEN LINES BELOW
-
-  let placeholder = "Delete me and code here";
-
+  function retry(someFunc, retries) {
+    let attempt = 0;
+    // ltc("Function passed in:");
+    // ltc(someFunc);
+    // ltc(`Retries limite: ${retries}`);
+    // ltc(`attempt number: ${attempt}`);
+    function execute(someFunc) {
+      try {
+        ltc("Starting try block");
+        execute(someFunc);
+        ltc("Try block ended");
+      } catch (error) {
+        ltc("Catch block started");
+        if (attempt < retries) {
+          attempt++;
+          ltc(`New attempt number: ${attempt}`);
+          ltc("Retrying function");
+          execute(someFunc);
+        } else {
+          ltc("Retry limit reached. Ending program.");
+          ltc(error.message);
+        }
+        console.error;
+      }
+    }
+    execute(someFunc);
+  }
+  retry(errorProneFunction, 4);
   // CODE IN THE OPEN LINES ABOVE
 }
 
